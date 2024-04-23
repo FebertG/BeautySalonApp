@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .full-screen-carousel {
+        position: relative;
+        height: 100vh;
+    }
+
+        .full-screen-carousel .carousel-item {
+            height: 100vh;
+            min-height: 300px;
+            background: no-repeat center center scroll;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .full-screen-carousel img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-height: 1080px;
+            width: 100%;
+            display: block;
+        }
+
+    .search-overlay {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        z-index: 2;
+        transform: translateY(-50%);
+    }
+
+    .carousel {
+        position: relative;
+    }
+</style>
+
+
+<div class="carousel slide full-screen-carousel" data-bs-ride="carousel" id="carouselExampleControls">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/image/1.webp" class="d-block w-100" alt="">
+        </div>
+        <div class="carousel-item">
+            <img src="/image/2.webp" class="d-block w-100" alt="">
+        </div>
+        <div class="carousel-item">
+            <img src="/image/3.webp" class="d-block w-100" alt="">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+
+    <div class="search-overlay">
+        <form method="get" action="@Url.Action("AllServices", "Services")" class="form-inline d-flex justify-content-center mb-3">
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" id="serviceName" name="serviceName" placeholder="Wyszukaj usługę" style="width: 400px;">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
+        </form>
+        <form action="@Url.Action("Index", "Salons")" method="get" class="form-inline d-flex justify-content-center">
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" name="searchString" class="form-control" placeholder="Wyszukaj salon po nazwie" style="width: 350px;">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" name="searchCity" class="form-control" placeholder="Wyszukaj salon po miejscowości" style="width: 350px;">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
+        </form>
+    </div>
+</div>

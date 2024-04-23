@@ -1,0 +1,78 @@
+﻿@model IEnumerable<BeautySalonApp.Models.GiftCard>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-3 pb-3">
+<h1>Karty podarunkowe</h1>
+
+<p>
+    <a asp-action="Create">Utwórz nową kartę podarunkową</a>
+</p>
+
+<form asp-action="Index" method="get" class="form-inline d-flex justify-content-center">
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" name="searchCode" class="form-control" placeholder="Wyszukaj po kodzie">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Kod
+            </th>
+            <th>
+                Nazwa
+            </th>
+            <th>
+                Opis
+            </th>
+            <th>
+                Cena
+            </th>
+            <th>
+                Wartość
+            </th>
+            <th>
+                Data ważności
+            </th>
+            <th>
+                Akcje
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpirationDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

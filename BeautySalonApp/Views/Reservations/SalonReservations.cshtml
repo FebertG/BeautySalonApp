@@ -1,0 +1,100 @@
+﻿@model Tuple<List<BeautySalonApp.Models.Reservation>, List<BeautySalonApp.Models.Reservation>>
+
+@{
+    ViewData["Title"] = "SalonReservations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-3 pb-3">
+<h1>Rezerwacje mojego salonu</h1>
+
+<h2>Przyszłe rezerwacje</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Rozpoczęcie
+            </th>
+            <th>
+                Zakończenie
+            </th>
+            <th>
+                Usługa
+            </th>
+            <th>
+                Cena
+            </th>
+            <th>
+                Akcje
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Item1)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service.ServiceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Anuluj rezerwację</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Historia rezerwacji</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Rozpoczęcie
+            </th>
+            <th>
+                Zakończenie
+            </th>
+            <th>
+                Usługa
+            </th>
+            <th>
+                Cena
+            </th>
+            <th>
+                Akcje
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Item2)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service.ServiceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,71 @@
+﻿@model BeautySalonApp.Models.Employee
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-3 pb-3">
+<h1>Tworzenie pracownika</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Imię</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label">Nazwisko</label>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Opis</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Dni pracy</label>
+                <div>
+                    <div><input type="checkbox" name="workingDays" value="Monday" /> Poniedziałek</div>
+                    <div><input type="checkbox" name="workingDays" value="Tuesday" /> Wtorek</div>
+                    <div><input type="checkbox" name="workingDays" value="Wednesday" /> Środa</div>
+                    <div><input type="checkbox" name="workingDays" value="Thursday" /> Czwartek</div>
+                    <div><input type="checkbox" name="workingDays" value="Friday" /> Piątek</div>
+                    <div><input type="checkbox" name="workingDays" value="Saturday" /> Sobota</div>
+                    <div><input type="checkbox" name="workingDays" value="Sunday" /> Niedziela</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Godzina rozpoczęcia pracy:</label>
+                <input type="time" name="startOfWork" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Godzina zakończenia pracy:</label>
+                <input type="time" name="endOfWork" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="UserId" class="form-control" value="@ViewData["User"]" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Utwórz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Powrót</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+</div>

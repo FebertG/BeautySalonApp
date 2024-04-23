@@ -1,0 +1,79 @@
+﻿@model IEnumerable<BeautySalonApp.Models.Service>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-3 pb-3">
+<h1>Moje usługi</h1>
+
+<p>
+    <a asp-action="Create">Utwórz nową usługę</a>
+</p>
+<form method="get" action="@Url.Action("Index", "Services")" class="form-inline d-flex justify-content-center mb-3">
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control" id="serviceName" name="serviceName" placeholder="Wyszukaj po nazwie" style="width: 400px;">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
+</form>
+
+<form method="get" action="@Url.Action("Index", "Services")" class="form-inline d-flex justify-content-center mb-3">
+    <div class="form-group mx-sm-3 mb-2">
+        <select class="form-control" name="sortOrder">
+            <option value="price">Cena rosnąco</option>
+            <option value="price_desc">Cena malejąco</option>
+            <option value="duration">Czas trwania rosnąco</option>
+            <option value="duration_desc">Czas trwania malejąco</option>
+            <option value="name">Nazwa A-Z</option>
+            <option value="name_desc">Nazwa Z-A</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-secondary mb-2">Sortuj</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa usługi</th>
+            <th>Czas trwania (min)</th>
+            <th>Cena</th>
+            <th>Opis</th>
+            <th>
+                Akcje
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            bool isOwner = User?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value == item.UserId;
+            if (isOwner)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.ServiceName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DurationMin)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var currentSort = '@ViewData["CurrentSort"]';
+            if (currentSort) {
+                var selectElement = document.querySelector('select[name="sortOrder"]');
+                selectElement.value = currentSort;
+            }
+        });
+    </script>
+}
+</div>

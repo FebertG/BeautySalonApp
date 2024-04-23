@@ -1,0 +1,51 @@
+﻿@model BeautySalonApp.Models.Salon
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-3 pb-3">
+<h1>Usuwanie</h1>
+
+<h3>Czy na pewno chcesz usunąć salon?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Nazwa
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Opis
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt class = "col-sm-2">
+            Adres
+        </dt>
+        <dd class = "col-sm-10">
+            <div class="address">
+                <div>@Html.DisplayFor(model => model.Address.Street) @Html.DisplayFor(model => model.Address.BuildingNumber) @Html.DisplayFor(model => model.Address.Apartment)</div>
+                <div>@Html.DisplayFor(model => model.Address.PostalCode) @Html.DisplayFor(model => model.Address.City)</div>
+                <div></div>
+            </div>
+        </dd>
+        <dt class = "col-sm-2">
+            Numer telefonu
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" /> |
+        <a asp-action="Index">Powrót</a>
+    </form>
+</div>
+</div>

@@ -1,0 +1,47 @@
+﻿@model BeautySalonApp.Models.Reservation
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-3 pb-3">
+<h1>Rezerwacja</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="UserId" class="form-control" style="display: none;" />
+
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label"><h4>Wybierz datę swojej rezerwacji</h4></label>
+                <input asp-for="StartTime" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+
+            <input asp-for="EndTime" class="form-control" style="display: none;" />
+
+            <input asp-for="ServiceId" class="form-control" style="display: none;" />
+
+            <input asp-for="Price" class="form-control" style="display: none;" />
+
+
+            <div class="form-group">
+                <input type="submit" value="Rezerwuj" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Lista Twoich rezerwacji</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+</div>

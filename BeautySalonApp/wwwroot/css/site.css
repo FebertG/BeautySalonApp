@@ -1,0 +1,196 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+footer {
+    background-color: #fff;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #12161d;
+    color: #fff;
+}
+
+.inline-form {
+    display: inline-block;
+}
+
+.modify-amount-input {
+    width: 80px; /* Mo¿na dostosowaæ szerokoœæ wed³ug swoich preferencji */
+    margin-left: 10px; /* Dodaj odstêp miêdzy polem wprowadzania a przyciskiem */
+}
+
+.opinion-tile {
+    background-color: #f8f9fa; /* Ustaw kolor t³a */
+    color: #212529; /* Ustaw kolor tekstu */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Dodaj cieñ */
+    padding: 15px; /* Zwiêksz wewnêtrzne wype³nienie */
+    margin-bottom: 20px; /* Zwiêksz margines na dole */
+    border-radius: 8px; /* Zaokr¹gl krawêdzie */
+}
+
+.address {
+    margin-bottom: 5px;
+}
+
+    .address div {
+        margin-bottom: 2px;
+    }
+
+/* Dodaj odpowiednie style dla œredniej ocen */
+.average-rating {
+    font-size: 24px;
+}
+
+    .average-rating::after {
+        content: ' / 5'; /* Dodaj tekst po ocenie */
+    }
+
+/* Styl dla oceny 1-2 */
+.average-rating.bad {
+    color: #ff6347; /* Czerwony kolor */
+}
+
+/* Styl dla oceny 3 */
+.average-rating.moderate {
+    color: #ffa500; /* Pomarañczowy kolor */
+}
+
+/* Styl dla oceny 4-5 */
+.average-rating.good {
+    color: #32cd32; /* Zielony kolor */
+}
+
+/* Stylizacja przycisku "Szczegó³y" */
+.details-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #4CAF50; /* Kolor t³a */
+    color: white; /* Kolor tekstu */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none; /* Usuniêcie domyœlnego podkreœlenia linku */
+    float: right; /* Przesuniêcie przycisku na praw¹ stronê */
+    margin-left: 10px; /* Dodatkowy margines, aby zachowaæ odstêp od tekstu */
+}
+
+    .details-button:hover {
+        background-color: #45a049; /* Kolor t³a po najechaniu myszk¹ */
+    }
+
+
+/* Stylizacja listy us³ug */
+.service-list {
+    list-style-type: none; /* Usuniêcie domyœlnych punktorów */
+    padding: 0;
+}
+
+    .service-list li {
+        border-bottom: 1px solid #ddd; /* Dodanie linii oddzielaj¹cej miêdzy us³ugami */
+        padding: 12px 0; /* Dostosowanie odstêpów */
+    }
+
+.service-name {
+    font-weight: bold; /* Wyt³uszczenie nazwy us³ugi */
+}
+
+.service-details {
+    margin-top: 4px; /* Dodatkowy margines na szczegó³y us³ugi */
+    color: #666; /* Kolor szczegó³ów */
+}
+
+/* Styl formularza produktu */
+.product-form {
+    margin-bottom: 20px; /* Margines na dole formularza */
+}
+
+/* Styl inputów produktu */
+.product-input {
+    margin-bottom: 10px; /* Margines na dole inputów */
+    width: 100%; /* Pe³na szerokoœæ inputów */
+}
+
+/* Styl listy produktów */
+.product-list {
+    list-style-type: none; /* Usuniêcie domyœlnych punktorów */
+    padding: 0; /* Usuniêcie wewnêtrznego wype³nienia */
+}
+
+/* Styl elementów listy produktów */
+.product-item {
+    margin-bottom: 10px; /* Wiêkszy odstêp miêdzy elementami listy */
+}
+
+/* Styl linków do szczegó³ów produktów */
+.product-details-link {
+    color: #007bff; /* Niebieski kolor linków */
+    text-decoration: none; /* Usuniêcie domyœlnego podkreœlenia */
+    margin-left: 10px; /* Dodatkowy margines po lewej stronie linku */
+}
+
+    /* Styl linków do szczegó³ów produktów po najechaniu myszk¹ */
+    .product-details-link:hover {
+        text-decoration: underline; /* Podkreœlenie linku po najechaniu myszk¹ */
+    }
+
+/* Styl inputu dla krótkiego pola */
+.short-input {
+    width: 250px; /* Szerokoœæ krótkiego pola */
+}
+
+/* Styl inputu dla d³ugiego pola */
+.long-input {
+    width: 760px; /* Szerokoœæ d³ugiego pola */
+}
+
+/* Style dla tabel */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    /* Stylizacja nag³ówków tabeli */
+    .table th {
+        background-color: #007bff; /* Kolor t³a nag³ówków */
+        color: #fff; /* Kolor tekstu nag³ówków */
+        padding: 12px 8px; /* Wewnêtrzne wype³nienie komórek */
+        border-bottom: 1px solid #ddd; /* Linia oddzielaj¹ca nag³ówki */
+        text-align: left; /* Wyrównanie tekstu do lewej */
+    }
+
+    /* Stylizacja wierszy tabeli */
+    .table td {
+        padding: 12px 8px; /* Wewnêtrzne wype³nienie komórek */
+        border-bottom: 1px solid #ddd; /* Linia oddzielaj¹ca wiersze */
+        color: #fff; /* Kolor tekstu wewn¹trz komórek */
+    }
+
+    /* Stylizacja linków w kolumnie akcji */
+    .table a {
+        color: #007bff; /* Kolor linków */
+        text-decoration: none; /* Usuniêcie domyœlnego podkreœlenia */
+        margin-right: 5px; /* Margines z prawej strony linków */
+    }
+
+        /* Stylizacja linków po najechaniu myszk¹ */
+        .table a:hover {
+            text-decoration: underline; /* Podkreœlenie linków po najechaniu myszk¹ */
+        }
+
+.black-text {
+    color: black;
+}

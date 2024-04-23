@@ -1,0 +1,69 @@
+﻿@model BeautySalonApp.Models.Warehouse
+
+@{
+    ViewData["Title"] = "Twój magazyn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-3 pb-3">
+<h1>@ViewData["Title"]</h1>
+
+@if (Model == null)
+{
+    <p>Nie masz jeszcze magazynu. Czy chciałbyś go utworzyć?</p>
+    <a class="btn btn-primary" href="@Url.Action("Create", "Warehouses")">Stwórz magazyn</a>
+}
+else
+{
+    <h2>Dodawanie produktu</h2>
+
+    <form asp-action="AddProduct" method="post" class="product-form">
+        <input type="hidden" name="WarehouseId" value="@Model.Id" />
+
+        <div class="form-row align-items-center">
+            <div class="form-group col-md-4">
+                <input type="text" name="Name" placeholder="Nazwa produktu" class="form-control product-input">
+            </div>
+
+            <div class="form-group col-md-4">
+                <input type="text" name="Brand" placeholder="Marka" class="form-control product-input">
+            </div>
+
+            <div class="form-group col-md-4">
+                <input type="number" name="Amount" placeholder="Ilość" class="form-control product-input">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="Description" placeholder="Opis" class="form-control product-input">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Dodaj produkt</button>
+        </div>
+    </form>
+
+
+
+
+
+
+    <h2>Twoje produkty</h2>
+    <ul class="product-list">
+        @foreach (var product in Model.Products)
+        {
+            <li class="product-item">
+                <span>@product.Name (@product.Amount)</span>
+                <form asp-action="ModifyProductAmount" method="post" class="inline-form product-form">
+                    <input type="hidden" name="ProductId" value="@product.Id" />
+                    <label for="ModifyAmount"></label>
+                    <input type="number" name="ModifyAmount" class="modify-amount-input" id="ModifyAmount" placeholder="Zmień o" />
+                    <button type="submit" class="btn btn-primary">Zmień ilość</button>
+                </form>
+                <a asp-action="ProductDetails" asp-route-productId="@product.Id" class="product-details-link">Szczegóły</a>
+            </li>
+        }
+    </ul>
+
+
+}
+</div>

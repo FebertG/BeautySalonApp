@@ -1,0 +1,78 @@
+﻿@model BeautySalonApp.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-3 pb-3">
+<h1>Szczegóły</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Imię
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Nazwisko
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+        <dt class="col-sm-2">
+            Opis
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt class="col-sm-2">
+            Dni pracy
+        </dt>
+        <dd class="col-sm-10">
+            <ul>
+                @foreach (var workingDate in Model.WorkingDate)
+                {
+                    var dayName = GetPolishDayName(workingDate.WorkDay);
+                    <li>@dayName</li>
+                    <li>Godzina rozpoczęcia: @workingDate.StartOfWork</li>
+                    <li>Godzina zakończenia: @workingDate.EndOfWork</li>
+                    <br />
+                }
+            </ul>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
+    <a asp-action="Index">Powrót</a>
+</div>
+
+@functions {
+    public string GetPolishDayName(DayOfWeek dayOfWeek)
+    {
+        switch (dayOfWeek)
+        {
+            case DayOfWeek.Monday:
+                return "Poniedziałek";
+            case DayOfWeek.Tuesday:
+                return "Wtorek";
+            case DayOfWeek.Wednesday:
+                return "Środa";
+            case DayOfWeek.Thursday:
+                return "Czwartek";
+            case DayOfWeek.Friday:
+                return "Piątek";
+            case DayOfWeek.Saturday:
+                return "Sobota";
+            case DayOfWeek.Sunday:
+                return "Niedziela";
+            default:
+                return "";
+        }
+    }
+}
+</div>

@@ -1,0 +1,15 @@
+﻿@model BeautySalonApp.Models.Product
+
+@{
+    ViewData["Title"] = "Szczegóły Produktu";
+}
+<div class="container mt-3 pb-3">
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Nazwa: @Model.Name</h4>
+    <h4>Opis: @Model.Description</h4>
+    <h4>Marka: @Model.Brand</h4>
+    <h4>Ilość: @Model.Amount</h4>
+</div>
+</div>
